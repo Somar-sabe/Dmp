@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Statement</title>
+</head>
+<body>
+
+<h1>Bank Statement</h1>
+
+<table border="1">
+    <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Debit</th>
+        <th>Credit</th>
+        <th>Balance</th>
+    </tr>
+
+    <?php
+    // Sample transactions data
+    $transactions = array(
+        array("2024-03-20", "Salary", 0, 3000),
+        array("2024-03-21", "Rent", 1000, 0),
+        array("2024-03-22", "Utilities", 200, 0),
+        array("2024-03-23", "Groceries", 150, 0),
+    );
+
+    $balance = 0;
+
+    foreach ($transactions as $transaction) {
+        $date = $transaction[0];
+        $description = $transaction[1];
+        $debit = $transaction[2];
+        $credit = $transaction[3];
+
+        // Update balance
+        $balance += ($credit - $debit);
+
+        echo "<tr>";
+        echo "<td>$date</td>";
+        echo "<td>$description</td>";
+        echo "<td>$debit</td>";
+        echo "<td>$credit</td>";
+        echo "<td>$balance</td>";
+        echo "</tr>";
+    }
+    ?>
+</table>
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+td:nth-child(3),
+td:nth-child(4),
+td:nth-child(5) {
+    text-align: right;
+}
+
+</style>
+</body>
+</html>
